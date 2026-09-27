@@ -94,3 +94,18 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+const express = require('express');
+const bodyParser = require('body-parser');
+const Web3 = require('web3');
+const WalletConnect = require('wallet-connect');
+const cors = require('cors'); // <-- 1. Import CORS
+
+const app = express();
+app.use(bodyParser.json());
+
+// <-- 2. Apply CORS middleware to allow requests from anywhere
+app.use(cors({
+    origin: '*' // This allows requests from ALL domains (your GitHub Pages site)
+})); 
+
+// ... rest of your code
